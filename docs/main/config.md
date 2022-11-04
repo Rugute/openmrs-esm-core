@@ -290,6 +290,25 @@ You can then use this typing information using the `as` keyword.
 const config = useConfig() as HologramDoctorConfig;
 ```
 
+### Implicit Configuration Options
+
+The framework applies certain implicit configuration options to every configuration.
+This is usually done to support features that implementers should be able to control
+on a per-app basis, but which are common to all frontend applications. From a schema
+design perspective, this means that there are a few schema keys that the framework
+has reserved and that you cannot use in your configuration schema. That said, these
+names are hopefully specific enough that you wouldn't need to use them anyways.
+
+In particular, the keys currently reserved by the framework are:
+
+  * `Display conditions` - used to define conditions that must hold for the extension
+    to be rendered by the framework
+  * `Translation overrides` - used to specify implementation-specific translation
+    strings
+
+If your application attempts to define a schema with either of these keys, the framework
+will log an error message to the console.
+
 ## Schema Reference
 
 #### `_default`
